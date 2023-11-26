@@ -27,7 +27,7 @@ unsafe fn put_char(c: char) {
         add     t1, a7, t0
         ld      t1, (t1)
         jalr    t1",
-        // clobber_abi("C"),
+        clobber_abi("C"),
         abi_num = const SYS_PUTCHAR,
         in("a0") arg0,
     )
@@ -54,10 +54,10 @@ unsafe fn terminate() {
 #[no_mangle]
 #[link_section = ".text.entry"]
 unsafe extern "C" fn _start() {
-    hello();
+    // hello();
     put_char('A');
-    puts("exercise 5");
-    terminate();
+    // puts("exercise 5");
+    // terminate();
 }
 
 use core::panic::PanicInfo;
